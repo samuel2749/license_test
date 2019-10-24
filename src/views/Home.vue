@@ -1,7 +1,8 @@
 <template lang="pug">
   .home
-    img(alt="Vue logo" src="/static/logo.png")
+    img(alt="Vue logo" src="../assets/logo.png")
     HelloWorld(msg="Welcome to Your Vue.js App")
+    .btn.btn-primary 測試
 </template>
 <script>
 // @ is an alias to /src
