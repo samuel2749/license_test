@@ -7,11 +7,18 @@
 <script>
 // @ is an alias to /src
 import HelloWorld from '@/components/HelloWorld.vue'
-
+import axio from 'axios'
 export default {
   name: 'home',
   components: {
     HelloWorld
+  },
+  mounted () {
+    axio.get('/json/erp.json').then(response => {
+      console.log(response)
+    }).catch(error => {
+      console.log(error)
+    })
   }
 }
 </script>
