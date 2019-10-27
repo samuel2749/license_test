@@ -11,14 +11,14 @@
 </template>
 <script>
 export default {
-  data () {
-    return {
+	data () {
+		return {
 
-    }
-  },
-  mounted () {
-    console.log(this.$route)
-  }
+		}
+	},
+	mounted () {
+		console.log(this.$route)
+	}
 }
 </script>
 <style lang="scss">
@@ -27,7 +27,7 @@ export default {
 #app {
   // max-width: wh(1080);
   .nav {
-    margin-bottom: 5vw;
+    margin-bottom: 20px;
   }
 }
 </style>
