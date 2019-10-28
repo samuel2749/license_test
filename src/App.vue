@@ -1,6 +1,6 @@
 <template lang="pug">
   .container#app
-    ul.nav.nav-pills.justify-content-center.sticky-top
+    ul.nav.nav-pills.justify-content-center.sticky-top.bg-light
       li.nav-item
         router-link.nav-link(to="./" :class="{active: $route.name === 'home'}") Home
       li.nav-item
