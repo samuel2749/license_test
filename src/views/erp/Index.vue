@@ -37,8 +37,6 @@ export default {
 	mounted () {
 		axio.get('/json/erp.json').then(response => {
 			this.erpData = [...response.data[0]]
-		}).catch(error => {
-			console.log(error)
 		})
 	},
 	methods: {

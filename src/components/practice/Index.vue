@@ -93,10 +93,8 @@ export default {
 			this.nowQuestion = { ...this.testLists.shift() }
 			this.qNum += 1
 			this.type = 'question'
-			console.log(this.nowQuestion)
 		},
 		checkAnswer () {
-			console.log(this.answers)
 			if (this.isRadio) {
 				if (this.answers === this.nowQuestion.answer[0]) {
 					this.correctCount += 1

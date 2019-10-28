@@ -30,8 +30,6 @@ export default {
 	mounted () {
 		axio.get('/json/pm.json').then(response => {
 			this.pmData = [...response.data]
-		}).catch(error => {
-			console.log(error)
 		})
 	},
 	methods: {
