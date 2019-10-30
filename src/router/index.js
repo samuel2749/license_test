@@ -7,26 +7,26 @@ import PM from '@/views/pm/Index.vue'
 Vue.use(VueRouter)
 
 const routes = [
-  {
-    path: '/',
-    name: 'home',
-    component: Home
-  },
-  {
-    path: '/erp',
-    name: 'erp',
-    component: ERP
-  },
-  {
-    path: '/pm',
-    name: 'pm',
-    component: PM
-  }
+	{
+		path: '/',
+		name: 'home',
+		component: Home
+	},
+	{
+		path: '/erp',
+		name: 'erp',
+		component: ERP
+	},
+	{
+		path: '/pm',
+		name: 'pm',
+		component: PM
+	}
 ]
 
 const router = new VueRouter({
-  mode: 'history',
-  routes
+	mode: 'history',
+	routes
 })
 
 export default router

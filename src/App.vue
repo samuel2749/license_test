@@ -28,7 +28,7 @@ export default {
 #app {
   // max-width: wh(1080);
   .nav {
-    margin-bottom: 20px;
+    margin-bottom: 50px;
   }
 }
 </style>

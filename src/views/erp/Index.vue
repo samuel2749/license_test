@@ -6,6 +6,7 @@
 	.pm.container(v-else)
 		h1.text-center ERP 測試
 		template(v-if="type == 'step1'")
+			.row.h5 選擇測試題數：
 			.row
 				.form-inline
 					.form-group.col-3
@@ -15,8 +16,18 @@
 					.form-group.col-1 到
 					.form-group.col-3
 						input.form-control(type="number" v-model="endNum")
-			button.btn.btn-lg.btn-block.btn-success(@click.prevent="onTest") 測驗開始
-		Practice(v-else-if="type == 'step2'" :questions="testQuestions" :callback="onBack" )
+			.row.h5 測驗題數：
+			.form-row.form-inline
+				.custom-control.custom-radio.custom-control-inline
+					input.custom-control-input(type="radio" id="radio-all" name="testTotal" value="all" v-model="countType")
+					label.custom-control-label(for="radio-all") 全部
+				.col-8.form-inline
+					.custom-control.custom-radio.custom-control-inline
+						input.custom-control-input(type="radio" id="radio-num" name="testTotal" value="limit" v-model="countType")
+						label.custom-control-label(for="radio-num") 題數
+					input.form-control.col-5(type="text" v-model="qNum" :disabled="countType=='all'")
+			button.btn.btn-lg.btn-block.btn-success.my-3(@click.prevent="onTest") 測驗開始
+		Practice(v-else-if="type == 'step2'" :questions="testQuestions" :callback="onBack" :total="total")
 </template>
 <script>
 import axio from 'axios'
@@ -28,7 +39,10 @@ export default {
 			testQuestions: [],
 			type: 'step1',
 			startNum: 1,
-			endNum: 50
+			endNum: 50,
+			countType: 'all',
+			qNum: 50,
+			total: 0
 		}
 	},
 	components: {
@@ -41,7 +55,8 @@ export default {
 	},
 	methods: {
 		onTest () {
-			var msg = `數字需介於1~${this.erpData.length}`
+			let qTotal = 0
+			let msg = `數字需介於1~${this.erpData.length}`
 			if (this.startNum < 1 || this.startNum > this.erpData.length) {
 				window.alert(`開始${msg}}`)
 				return
@@ -52,7 +67,21 @@ export default {
 			}
 			this.testQuestions = []
 			for (let qNum = this.startNum; qNum <= this.endNum; qNum++) {
+				qTotal += 1
 				this.testQuestions.push(this.erpData[qNum - 1])
+			}
+			if (this.countType === 'all') {
+				this.total = qTotal
+			} else if (this.countType === 'limit') {
+				if (this.qNum < 10) {
+					window.alert('測試題數必須大於10')
+					return
+				}
+				if (this.qNum > qTotal) {
+					window.alert(`測試題數必須小於${qTotal}`)
+					return
+				}
+				this.total = parseInt(this.qNum)
 			}
 			this.type = 'step2'
 		},

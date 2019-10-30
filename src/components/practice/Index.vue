@@ -2,6 +2,7 @@
 	.practice.container(v-if="isStart")
 		.row
 			.h3.text-primary {{`Q${qNum}:`}}
+				span.p-2(v-if="!isQuestion" :class="{'text-success': isCorrect, 'text-danger': !isCorrect}") ({{isCorrect? '答對': '答錯'}})
 			.h3.text-primary {{nowQuestion.question}}
 		.row
 			.col-12.custom-control.h4(v-for="(item, index) in nowQuestion.option" :key="`option${index}`" :class="{'custom-radio': isRadio, 'custom-checkbox': !isRadio}")
@@ -10,12 +11,12 @@
 				.clearfix
 		.row
 			button.btn.btn-lg.btn-block.btn-success(@click.prevent="checkAnswer" v-if="isQuestion") 確認
-			button.btn.btn-lg.btn-block.btn-success(@click.prevent="nextQuestion" v-else) {{!isEnd? '下一題': '看結果'}}
+			button.btn.btn-lg.btn-block.btn-info(@click.prevent="nextQuestion" v-else) {{!isEnd? '下一題': '看結果'}}
 	.practice.container(v-else)
 		.row
-			.h3 總題數 {{questions.length}}
+			.h3 總題數 {{total}}
 			.h3.text-success 答對 {{correctCount}} 題
-			.h3.text-danger 答錯 {{questions.length - correctCount}} 題
+			.h3.text-danger 答錯 {{total - correctCount}} 題
 		.row
 			button.btn.btn-lg.btn-block.btn-success(@click.prevent="randomTestList") 再測試一次
 			button.btn.btn-lg.btn-block.btn-success(@click.prevent="callback") 返回
@@ -30,6 +31,10 @@ export default {
 			},
 			type: Array
 		},
+		total: {
+			default: 0,
+			type: Number
+		},
 		callback: {
 			default: () => {},
 			type: Function
@@ -43,6 +48,7 @@ export default {
 			nowQuestion: false,
 			type: 'ans',
 			isStart: false,
+			isCorrect: false,
 			correctCount: 0
 		}
 	},
@@ -71,7 +77,7 @@ export default {
 	methods: {
 		randomTestList () {
 			let tempArr = []
-			while (tempArr.length < this.questions.length) {
+			while (tempArr.length < this.total) {
 				tempArr.push(tempArr.length)
 			}
 			while (tempArr.length > 0) {
@@ -95,9 +101,10 @@ export default {
 			this.type = 'question'
 		},
 		checkAnswer () {
+			this.isCorrect = false
 			if (this.isRadio) {
 				if (this.answers === this.nowQuestion.answer[0]) {
-					this.correctCount += 1
+					this.isCorrect = true
 				}
 			} else {
 				let bol = this.answers.length === this.nowQuestion.answer.length
@@ -107,8 +114,11 @@ export default {
 					}
 				})
 				if (bol) {
-					this.correctCount += 1
+					this.isCorrect = true
 				}
+			}
+			if (this.isCorrect) {
+				this.correctCount += 1
 			}
 			this.type = 'answer'
 		},
