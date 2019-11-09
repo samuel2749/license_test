@@ -19,6 +19,9 @@
 			.row.h5 測驗題數：
 			.form-row.form-inline
 				.custom-control.custom-radio.custom-control-inline
+					input.custom-control-input(type="radio" id="test" name="testTotal" value="test" v-model="countType")
+					label.custom-control-label(for="test") 期中測試
+				.custom-control.custom-radio.custom-control-inline
 					input.custom-control-input(type="radio" id="radio-all" name="testTotal" value="all" v-model="countType")
 					label.custom-control-label(for="radio-all") 全部
 				.col-8.form-inline
@@ -50,25 +53,25 @@ export default {
 	},
 	mounted () {
 		axio.get('/json/erp.json').then(response => {
-			this.erpData = [...response.data[0]]
+			this.erpData = [...response.data]
 		})
 	},
 	methods: {
 		onTest () {
 			let qTotal = 0
-			let msg = `數字需介於1~${this.erpData.length}`
-			if (this.startNum < 1 || this.startNum > this.erpData.length) {
+			let msg = `數字需介於1~${this.erpData[0].length}`
+			if (this.startNum < 1 || this.startNum > this.erpData[0].length) {
 				window.alert(`開始${msg}}`)
 				return
 			}
-			if (this.endNum < 1 || this.endNum > this.erpData.length) {
+			if (this.endNum < 1 || this.endNum > this.erpData[0].length) {
 				window.alert(`結束${msg}}`)
 				return
 			}
 			this.testQuestions = []
 			for (let qNum = this.startNum; qNum <= this.endNum; qNum++) {
 				qTotal += 1
-				this.testQuestions.push(this.erpData[qNum - 1])
+				this.testQuestions.push(this.erpData[0][qNum - 1])
 			}
 			if (this.countType === 'all') {
 				this.total = qTotal
@@ -82,6 +85,9 @@ export default {
 					return
 				}
 				this.total = parseInt(this.qNum)
+			} else if (this.countType === 'test') {
+				this.testQuestions = [].concat(this.erpData[1])
+				this.total = this.testQuestions.length
 			}
 			this.type = 'step2'
 		},
