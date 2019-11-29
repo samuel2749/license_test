@@ -1,6 +1,6 @@
 <template lang="pug">
 	.home.container
-		h1.text-center 資四甲 證照測驗
+		h1.text-center.mb-5 資四甲 證照測驗
 		router-link.btn.btn-lg.btn-block.btn-success(to="./erp") ERP 測驗
 		router-link.btn.btn-lg.btn-block.btn-success(to="./pm") PM 測驗
 </template>
@@ -15,9 +15,4 @@ export default {
 }
 </script>
 <style lang="scss">
-	.home{
-		h1{
-			margin-bottom: 6vw
-		}
-	}
 </style>
