@@ -3,20 +3,20 @@
 		button.btn.btn-primary(disabled)
 			span.spinner-border.spinner-border-sm(role="status" aria-hidden="true")
 			|Loading...
-	.pm.container(v-else)
+	.pm.container-fluid(v-else)
 		template(v-if="type == 'step1'")
 			h1.text-center ERP
 			.row.h5 選擇題數：
-			.row.form-inline
+				button.btn.btn-sm.btn-success(@click="onAllTest") 全部
+			.form-row.form-inline.mb-2
 				.form-group.col-3
-					label.col-form-label 題數：
-				.form-group.col-3
-					input.form-control(type="number" v-model="startNum")
+					input.form-control.col(type="number" v-model="startNum")
 				.form-group.col-1 到
 				.form-group.col-3
-					input.form-control(type="number" v-model="endNum")
+					input.form-control.col(type="number" v-model="endNum")
 			.row.h5 模式：
-				.custom-control.custom-radio.custom-control-inline
+			.form-row.form-inline.mb-2
+				.custom-control.custom-radio.custom-control-inline.mr-5
 					input.custom-control-input(type="radio" id="radio-read" name="mode" value="read" v-model="modeType")
 					label.custom-control-label(for="radio-read") 閱讀
 				.custom-control.custom-radio.custom-control-inline
@@ -53,7 +53,7 @@ export default {
 			startNum: 1,
 			endNum: 50,
 			countType: 'all',
-			modeType: 'read',
+			modeType: 'test',
 			qNum: 50,
 			total: 0
 		}
@@ -76,6 +76,10 @@ export default {
 		}
 	},
 	methods: {
+		onAllTest () {
+			this.startNum = 1
+			this.endNum = this.erpData.length
+		},
 		onTest () {
 			let qTotal = 0
 			let msg = `數字需介於1~${this.erpData.length}`

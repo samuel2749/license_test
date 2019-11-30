@@ -9,7 +9,7 @@
         router-link.nav-link(to="./pm" :class="{active: $route.name === 'pm'}") 專案管理 考題
     router-view
     .row
-      .col-12.pt-5.pb-3.text-center Copyright By Samuel 2019-10-28
+      .col-12.pt-5.pb-3.text-center Copyright 1.0.1 By Samuel 2019-12-1
 </template>
 <script>
 export default {

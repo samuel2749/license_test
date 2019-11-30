@@ -1,6 +1,15 @@
 <template lang="pug">
 	.reading.container
-		.row reading
+		.card.row.mb-3.border-primary(v-for="(item, index) in questions" :key="`q-${index}`")
+			.card-header
+				h3.font-weight-bold {{index + 1}}:
+			.card-body
+				h5.card-title.text-primary.font-weight-bold {{item.question}}
+				p.card-text(
+					v-for="(option, optionIndex) in item.option"
+					:key="`option-${optionIndex}`"
+					:class="optionIndex|correct(item.answer)"
+					) {{optionIndex+1}}：{{option}}
 </template>
 <script>
 export default {
@@ -34,6 +43,11 @@ export default {
 	},
 	mounted () {
 
+	},
+	filters: {
+		correct (val, arr) {
+			return arr.indexOf((val + 1) + '') > -1 ? 'bg-info text-white' : ''
+		}
 	},
 	computed: {
 	},

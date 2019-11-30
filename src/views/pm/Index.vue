@@ -3,15 +3,24 @@
 		button.btn.btn-primary(disabled)
 			span.spinner-border.spinner-border-sm(role="status" aria-hidden="true")
 			|Loading...
-	.pm.container(v-else)
-		h1.text-center 專案管理 測試
+	.pm.container-fluid(v-else)
 		template(v-if="type == 'step1'")
-			.row.h5 選擇測試章節：
+			h1.text-center 專案管理
+			.row.h5 選擇章節：
+				button.btn.btn-sm.btn-success(@click="onAllTest") 全部
 			.row.custom-control.custom-checkbox.form-control-lg(v-for="(item, index) in pmData" :key="`question${index}`")
 				input.custom-control-input(type="checkbox" :id="`q${index}`" :value="index" v-model="questions")
 				label.custom-control-label(:for="`q${index}`") {{`0${index + 1} ${item.length}題`}}
+			.row.h5 模式：
+			.form-row.form-inline.mb-2
+				.custom-control.custom-radio.custom-control-inline.mr-5
+					input.custom-control-input(type="radio" id="radio-read" name="mode" value="read" v-model="modeType")
+					label.custom-control-label(for="radio-read") 閱讀
+				.custom-control.custom-radio.custom-control-inline
+					input.custom-control-input(type="radio" id="radio-test" name="mode" value="test" v-model="modeType")
+					label.custom-control-label(for="radio-test") 測試
 			.row.h5 測驗題數：
-			.form-row.form-inline
+			.form-row.form-inline(:class="{'form-uncontrol': !isTest}")
 				.custom-control.custom-radio.custom-control-inline
 					input.custom-control-input(type="radio" id="radio-all" name="testTotal" value="all" v-model="countType")
 					label.custom-control-label(for="radio-all") 全部
@@ -20,12 +29,18 @@
 						input.custom-control-input(type="radio" id="radio-num" name="testTotal" value="limit" v-model="countType")
 						label.custom-control-label(for="radio-num") 題數
 					input.form-control.col-5(type="text" v-model="qNum" :disabled="countType=='all'")
-				button.btn.btn-lg.btn-block.btn-success.my-3(@click.prevent="onTest") 測驗開始
-		Practice(v-else-if="type == 'step2'" :questions="testQuestions" :callback="onBack" :total="total")
+			button.btn.btn-lg.btn-block.btn-success.my-3(@click.prevent="onTest") {{startBtnValue}}
+		template(v-else-if="type == 'step2'")
+			.row
+				.h5 專案管理：
+					button.btn.btn-sm.btn-secondary.ml-2(@click="onBack") 返回
+			Practice(v-if="isTest" :questions="testQuestions" :callback="onBack" :total="total")
+			Reading(v-else :questions="testQuestions" :callback="onBack")
 </template>
 <script>
 import axio from 'axios'
 import Practice from '@/components/practice/Index.vue'
+import Reading from '@/components/reading/Index.vue'
 export default {
 	data () {
 		return {
@@ -34,12 +49,14 @@ export default {
 			testQuestions: [],
 			type: 'step1',
 			countType: 'all',
+			modeType: 'test',
 			qNum: 50,
 			total: 0
 		}
 	},
 	components: {
-		Practice
+		Practice,
+		Reading
 	},
 	mounted () {
 		axio.get('/json/pm.json').then(response => {
@@ -47,6 +64,12 @@ export default {
 		})
 	},
 	computed: {
+		isTest () {
+			return this.modeType === 'test'
+		},
+		startBtnValue () {
+			return this.isTest ? '開始測試' : '開始閱讀'
+		},
 		questionTotal () {
 			var total = 0
 			this.questions.forEach(index => {
@@ -56,6 +79,9 @@ export default {
 		}
 	},
 	methods: {
+		onAllTest () {
+			this.questions = [0, 1, 2, 3, 4]
+		},
 		onTest () {
 			let qTotal = 0
 			this.testQuestions = []
@@ -90,4 +116,18 @@ export default {
 }
 </script>
 <style lang="scss">
+	.form-uncontrol{
+		position: relative;
+		opacity: 0.5;
+		&::after{
+			content: '';
+			position: absolute;
+			display: block;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			z-index: 10;
+		}
+	}
 </style>
