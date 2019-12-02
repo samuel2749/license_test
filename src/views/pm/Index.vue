@@ -80,7 +80,10 @@ export default {
 	},
 	methods: {
 		onAllTest () {
-			this.questions = [0, 1, 2, 3, 4]
+			this.questions = []
+			this.pmData.forEach((item, index) => {
+				this.questions.push(index)
+			})
 		},
 		onTest () {
 			let qTotal = 0
