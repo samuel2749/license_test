@@ -3,6 +3,7 @@
 		.row
 			.h3.text-primary {{`Q${qNum}:`}}
 				span.p-2(v-if="!isQuestion" :class="{'text-success': isCorrect, 'text-danger': !isCorrect}") ({{isCorrect? '答對': '答錯'}})
+		.row
 			.h3.text-primary {{nowQuestion.question}}
 		.row
 			.col-12.custom-control.h4(v-for="(item, index) in nowQuestion.option" :key="`option${index}`" :class="{'custom-radio': isRadio, 'custom-checkbox': !isRadio}")
