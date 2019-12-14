@@ -28,7 +28,7 @@
 					.custom-control.custom-radio.custom-control-inline
 						input.custom-control-input(type="radio" id="radio-num" name="testTotal" value="limit" v-model="countType")
 						label.custom-control-label(for="radio-num") 題數
-					input.form-control.col-5(type="text" v-model="qNum" :disabled="countType=='all'")
+					input.form-control.col-5(type="tel" v-model="qNum" :disabled="countType=='all'")
 			button.btn.btn-lg.btn-block.btn-success.my-3(@click.prevent="onTest") {{startBtnValue}}
 		template(v-else-if="type == 'step2'")
 			.row
