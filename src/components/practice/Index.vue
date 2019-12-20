@@ -21,6 +21,20 @@
 		.row
 			button.btn.btn-lg.btn-block.btn-success(@click.prevent="randomTestList") 再測試一次
 			button.btn.btn-lg.btn-block.btn-success(@click.prevent="callback") 返回
+		.row.mt-3
+			.h3 錯誤題目
+			.col-12
+				span.bg-info.text-white.ml-3 正確答案
+				span.text-danger.ml-3 選擇的答案
+			.container-fluid
+				.card.row.mb-3.border-primary(v-for="(item, index) in reviewQuestions" :key="`rewivew-q-${index}`")
+					.card-body
+						h5.card-title.text-primary.font-weight-bold {{item.question}}
+						p.card-text(
+							v-for="(option, optionIndex) in item.option"
+							:key="`option-${optionIndex}`"
+							:class="optionIndex|answerFilter(item.answer, item.wrongAnswer)"
+							) {{optionIndex+1}}：{{option}}
 </template>
 <script>
 import _ from 'lodash'
@@ -46,6 +60,7 @@ export default {
 			qNum: 0,
 			testLists: [],
 			answers: [],
+			reviewQuestions: [],
 			nowQuestion: false,
 			type: 'ans',
 			isStart: false,
@@ -63,6 +78,20 @@ export default {
 	},
 	mounted () {
 
+	},
+	filters: {
+		answerFilter (val, arr, wrongArr) {
+			// return arr.indexOf((val + 1) + '') > -1 ? 'bg-info text-white' : ''
+			var classes = []
+			if (arr.indexOf((val + 1) + '') > -1) {
+				classes.push('bg-info')
+				classes.push('text-white')
+			}
+			if (wrongArr.indexOf((val + 1) + '') > -1) {
+				classes.push('text-danger')
+			}
+			return classes.join(' ')
+		}
 	},
 	computed: {
 		isEnd () {
@@ -89,6 +118,7 @@ export default {
 			this.correctCount = 0
 			this.qNum = 0
 			this.isStart = true
+			this.reviewQuestions = []
 			this.nextQuestion()
 		},
 		nextQuestion () {
@@ -120,6 +150,8 @@ export default {
 			}
 			if (this.isCorrect) {
 				this.correctCount += 1
+			} else {
+				this.reviewQuestions.push(_.merge({ wrongAnswer: [].concat(this.answers) }, this.nowQuestion))
 			}
 			this.type = 'answer'
 		},
