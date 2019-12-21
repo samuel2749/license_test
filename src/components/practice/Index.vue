@@ -107,10 +107,10 @@ export default {
 	methods: {
 		randomTestList () {
 			let tempArr = []
-			while (tempArr.length < this.total) {
+			while (tempArr.length < this.questions.length) {
 				tempArr.push(tempArr.length)
 			}
-			while (tempArr.length > 0) {
+			while (this.testLists.length < this.total) {
 				let index = _.random(tempArr.length - 1)
 				this.testLists.push(this.questions[tempArr[index]])
 				tempArr.splice(index, 1)
