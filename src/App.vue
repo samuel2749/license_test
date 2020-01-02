@@ -4,6 +4,8 @@
       li.nav-item
         router-link.nav-link(to="./" :class="{active: $route.name === 'home'}") Home
       li.nav-item
+        router-link.nav-link(to="./ebc" :class="{active: $route.name === 'ebc'}") EBC 考題
+      li.nav-item
         router-link.nav-link(to="./erp" :class="{active: $route.name === 'erp'}") ERP 考題
       li.nav-item
         router-link.nav-link(to="./pm" :class="{active: $route.name === 'pm'}") 專案管理 考題
