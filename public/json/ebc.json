@@ -102,10 +102,10 @@
             "no": "1-08.",
             "question": "下列何者是經由感應器（Reader）接收標籤（Tag）所發出之無線 訊號，以達成資料傳輸之通訊技術應用？",
             "option": [
-                "（Ａ）全球定位系統（GPS",
-                " Global Positioning System）",
-                "（Ｂ）無線射頻識別系統（RFID",
-                " Radio Frequency Identification）"
+                "（Ａ）全球定位系統（GPS, Global Positioning System）",
+                "（Ｂ）無線射頻識別系統（RFID, Radio Frequency Identification）",
+                "（Ｃ）⾏動條碼（QR Code, Quick Response Code）",
+                "（Ｄ）銷售時點系統（POS, Point Of Sales）"
             ],
             "answer": [
                 "2"
@@ -197,10 +197,10 @@
             "no": "1-15.",
             "question": "下列敘述何者錯誤？",
             "option": [
-                "（Ａ）選擇網際網路服務提供者（ISP）要考慮的因素有：撥接費用、業者連線撥號線路的多寡、連線情況是否夠穩定、資料傳輸速率是否夠快、ISP 是否提供更多額外附加的服務項目等",
-                "（Ｂ）由於採用傳統撥接回公司的專線⽅式，不僅費用高，而且 使用網際網路傳輸資料，也無法確保通訊安全。為了避免 以上問題，在網際網路上利用 IP 技術，建立⼀個私有的 安全網路連接⽅式，稱為「虛擬私有網路」（Virtual Private Network",
-                " VPN）",
-                "（Ｃ）網際網路服務提供者（Internet Service Provider"
+                "（Ａ）選擇網際網路服務提供者（ISP）要考慮的因素有：撥接費用、業者連線撥號線路的多寡、連線情況是否夠穩定、資料傳輸速率是否夠快、ISP  是否提供更多額外附加的服務項目等",
+                "（Ｂ）由於採用傳統撥接回公司的專線⽅式，不僅費用高，而且 使用網際網路傳輸資料，也無法確保通訊安全。為了避免 以上問題，在網際網路上利用  IP  技術，建立⼀個私有的 安全網路連接⽅式，稱為「虛擬私有網路」（Virtual Private Network, VPN）",
+                "（Ｃ）網際網路服務提供者（Internet Service Provider, ISP） 所提供的就是協助用戶連上網際網路的服務",
+                "（Ｄ）Intranet  則是為企業上、下游各相關策略聯盟企業間 整合所構成的網路，需要使用防火牆管理。目前多應用於 電子型錄與電子資料交換"
             ],
             "answer": [
                 "4"
@@ -236,12 +236,12 @@
         },
         {
             "no": "1-18.",
-            "question": "服務導向架構（Service Oriented Architecture",
+            "question": "服務導向架構（Service Oriented Architecture, SOA），其主要 概念是針對企業需求組合而成的⼀組軟體元件組合之元素，是⼀ 種軟體建構與組成的⽅法。下列何者不是 SOA 的特性？",
             "option": [
-                " SOA），其主要 概念是針對企業需求組合而成的⼀組軟體元件組合之元素，是⼀ 種軟體建構與組成的⽅法。下列何者不是 SOA 的特性？",
                 "（Ａ）分散式的架構",
                 "（Ｂ）模組化物件化的元件",
-                "（Ｃ）獨特的標準"
+                "（Ｃ）獨特的標準",
+                "（Ｄ）公用化計價"
             ],
             "answer": [
                 "3"
@@ -251,10 +251,10 @@
             "no": "1-19.",
             "question": "請問下列敘述何者有誤？",
             "option": [
-                "（Ａ）網域名稱伺服器（Domain Name Server",
-                " DNS）是以⼀組英文縮寫來代表以數字為主的 IP 位址",
-                "（Ｂ）網域名稱伺服器（Domain Name Server",
-                " DNS）是負責 IP 位址與網域名稱轉換工作的電腦"
+                "（Ａ）網域名稱伺服器（Domain Name Server, DNS）是以⼀組英文縮寫來代表以數字為主的 IP 位址",
+                "（Ｂ）網域名稱伺服器（Domain Name Server, DNS）是負責 IP 位址與網域名稱轉換工作的電腦",
+                "（Ｃ）網域名稱伺服器（Domain Name Server, DNS）的組成 是屬於階層式的樹狀結構",
+                "（Ｄ）網域名稱伺服器（Domain Name Server, DNS）包含 四個部分：主機名稱、機構名稱、機構類別、地區名稱"
             ],
             "answer": [
                 "1"
@@ -1884,9 +1884,9 @@
             "question": "在自動清償交易網路 B2B 有三種交易的付款⽅式，以下哪三種 屬於 B2B 的付費⽅式？(複選)",
             "option": [
                 "（Ａ）電子化小額付費（e-micropayment）",
-                "（Ｂ）現金集中或⽀出（Cash Concentration or Disbursement",
-                " CCD）",
-                "（Ｃ）進階現金集中或⽀出（Cash Concentration or Disbursement with Addenda"
+                "（Ｂ）現金集中或⽀出（Cash Concentration or Disbursement, CCD）",
+                "（Ｃ）進階現金集中或⽀出（Cash Concentration or Disbursement with Addenda, CCD+）",
+                "（Ｄ）公司交易匯兌（Corporate Trade Exchange, CTX）"
             ],
             "answer": [
                 "2",
@@ -2104,9 +2104,9 @@
             "question": "網路廣告每年大約成⻑ 20% 至 30%，網路廣告的定價模式中， 只有在訪客點進廣告並造訪廣告商的網站時才付費，稱此模式為 下列何者？",
             "option": [
                 "（Ａ）按固定期間收取固定價格",
-                "（Ｂ）每千次廣告曝光成本（cost per thousand impressions",
-                " CPM）",
-                "（Ｃ）點擊收費模式（pay-per-click）"
+                "（Ｂ）每千次廣告曝光成本（cost per thousand impressions, CPM）",
+                "（Ｃ）點擊收費模式（pay-per-click）",
+                "（Ｄ）按收益定價模式"
             ],
             "answer": [
                 "3"
