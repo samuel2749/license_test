@@ -1,5 +1,5 @@
 <template lang="pug">
-	.text-center(v-if="!erpData.length")
+	.text-center(v-if="!ebcData.length")
 		button.btn.btn-primary(disabled)
 			span.spinner-border.spinner-border-sm(role="status" aria-hidden="true")
 			|Loading...
@@ -10,10 +10,10 @@
 				button.btn.btn-sm.btn-success(@click="onAllTest") 全部
 			.form-row.form-inline.mb-2
 				.form-group.col-3
-					input.form-control.col(type="tel" v-model="startNum")
+					input.form-control.col(type="tel" v-model.number="startNum")
 				.form-group.col-1 到
 				.form-group.col-3
-					input.form-control.col(type="tel" v-model="endNum")
+					input.form-control.col(type="tel" v-model.number="endNum")
 			.row.h5 模式：
 			.form-row.form-inline.mb-2
 				.custom-control.custom-radio.custom-control-inline.mr-5
@@ -31,7 +31,7 @@
 					.custom-control.custom-radio.custom-control-inline
 						input.custom-control-input(type="radio" id="radio-num" name="testTotal" value="limit" v-model="countType")
 						label.custom-control-label(for="radio-num") 題數
-					input.form-control.col-5(type="tel" v-model="qNum" :disabled="countType=='all'")
+					input.form-control.col-5(type="tel" v-model.number="qNum" :disabled="countType=='all'")
 			button.btn.btn-lg.btn-block.btn-success.my-3(@click.prevent="onTest") {{startBtnValue}}
 		template(v-else-if="type == 'step2'")
 			.row
@@ -47,7 +47,7 @@ import Reading from '@/components/reading/Index.vue'
 export default {
 	data () {
 		return {
-			erpData: [],
+			ebcData: [],
 			testQuestions: [],
 			type: 'step1',
 			startNum: 1,
@@ -64,7 +64,7 @@ export default {
 	},
 	mounted () {
 		axio.get('/json/ebc.json').then(response => {
-			this.erpData = [...response.data[0]]
+			this.ebcData = [...response.data[0]]
 		})
 	},
 	computed: {
@@ -78,23 +78,23 @@ export default {
 	methods: {
 		onAllTest () {
 			this.startNum = 1
-			this.endNum = this.erpData.length
+			this.endNum = this.ebcData.length
 		},
 		onTest () {
 			let qTotal = 0
-			let msg = `數字需介於1~${this.erpData.length}`
-			if (this.startNum < 1 || this.startNum > this.erpData.length) {
+			let msg = `數字需介於1~${this.ebcData.length}`
+			if (this.startNum < 1 || this.startNum > this.ebcData.length) {
 				window.alert(`開始${msg}}`)
 				return
 			}
-			if (this.endNum < 1 || this.endNum > this.erpData.length) {
+			if (this.endNum < 1 || this.endNum > this.ebcData.length) {
 				window.alert(`結束${msg}}`)
 				return
 			}
 			this.testQuestions = []
-			for (let qNum = this.startNum; qNum <= this.endNum; qNum++) {
+			for (let tempNum = this.startNum; tempNum <= this.endNum; tempNum++) {
 				qTotal += 1
-				this.testQuestions.push(this.erpData[qNum - 1])
+				this.testQuestions.push(this.ebcData[tempNum - 1])
 			}
 			if (this.countType === 'all') {
 				this.total = qTotal

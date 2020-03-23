@@ -10,10 +10,10 @@
 				button.btn.btn-sm.btn-success(@click="onAllTest") 全部
 			.form-row.form-inline.mb-2
 				.form-group.col-3
-					input.form-control.col(type="tel" v-model="startNum")
+					input.form-control.col(type="tel" v-model.number="startNum")
 				.form-group.col-1 到
 				.form-group.col-3
-					input.form-control.col(type="tel" v-model="endNum")
+					input.form-control.col(type="tel" v-model.number="endNum")
 			.row.h5 模式：
 			.form-row.form-inline.mb-2
 				.custom-control.custom-radio.custom-control-inline.mr-5
@@ -31,7 +31,7 @@
 					.custom-control.custom-radio.custom-control-inline
 						input.custom-control-input(type="radio" id="radio-num" name="testTotal" value="limit" v-model="countType")
 						label.custom-control-label(for="radio-num") 題數
-					input.form-control.col-5(type="tel" v-model="qNum" :disabled="countType=='all'")
+					input.form-control.col-5(type="tel" v-model.number="qNum" :disabled="countType=='all'")
 			button.btn.btn-lg.btn-block.btn-success.my-3(@click.prevent="onTest") {{startBtnValue}}
 		template(v-else-if="type == 'step2'")
 			.row
@@ -92,9 +92,9 @@ export default {
 				return
 			}
 			this.testQuestions = []
-			for (let qNum = this.startNum; qNum <= this.endNum; qNum++) {
+			for (let tempNum = this.startNum; tempNum <= this.endNum; tempNum++) {
 				qTotal += 1
-				this.testQuestions.push(this.erpData[qNum - 1])
+				this.testQuestions.push(this.erpData[tempNum - 1])
 			}
 			if (this.countType === 'all') {
 				this.total = qTotal

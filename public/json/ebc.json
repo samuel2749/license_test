@@ -992,12 +992,12 @@
         },
         {
             "no": "1-74.",
-            "question": "下列哪些屬於服務導向架構（Service-Oriented Architecture",
+            "question": "下列哪些屬於服務導向架構（Service-Oriented Architecture, SOA）的特性？(複選)",
             "option": [
-                " SOA）的特性？(複選)",
                 "（Ａ）集中式的架構",
                 "（Ｂ）模組化、物件化的元件",
-                "（Ｃ）開放的標準"
+                "（Ｃ）開放的標準",
+                "（Ｄ）公用化計價"
             ],
             "answer": [
                 "2",
@@ -1117,12 +1117,12 @@
         },
         {
             "no": "1-83.",
-            "question": "依據標準組織（如 World Wide Web Consortivrn",
+            "question": "依據標準組織（如 World Wide Web Consortivrn, W3G）所制 定的標準協定，包括通用描述與整合（Universal Description Discovery and Integration, UDDI）及物件存取協定（Sample Object Access Protocol, SOAP）使得網路上不同平台的軟體元 件可以互相呼叫及傳遞資訊的⼀種開放架構與標準。以上描述是 指下列哪⼀種項目？",
             "option": [
-                " W3G）所制 定的標準協定，包括通用描述與整合（Universal Description Discovery and Integration",
-                " UDDI）及物件存取協定（Sample Object Access Protocol",
-                " SOAP）使得網路上不同平台的軟體元 件可以互相呼叫及傳遞資訊的⼀種開放架構與標準。以上描述是 指下列哪⼀種項目？",
-                "（Ａ）ERP"
+                "（Ａ）ERP",
+                "（Ｂ）Web service",
+                "（Ｃ）CRM",
+                "（Ｄ）SCM"
             ],
             "answer": [
                 "2"
@@ -1212,14 +1212,15 @@
             "no": "2-05.",
             "question": "關於網路⾏銷的效果評估，下列何者正確？（請參閱附圖作答）",
             "option": [
-                "（Ａ）（A）選項",
-                "（Ｂ）（B）選項",
-                "（Ｃ）（C）選項",
-                "（Ｄ）（D）選項"
+                "（Ａ）A 選項",
+                "（Ｂ）B 選項",
+                "（Ｃ）C 選項",
+                "（Ｄ）D 選項"
             ],
             "answer": [
                 "3"
-            ]
+            ],
+            "img": "2-05.png"
         },
         {
             "no": "2-06.",
@@ -1293,10 +1294,10 @@
             "no": "2-11.",
             "question": "數位⾏銷管道（Digital Marketing）中，下列何者為企業為了⾏ 銷的目的，在網路上創造特定的訊息或內容來吸引消費大眾的注 意，引起線上⺠眾的討論，並⿎勵閱讀者透過個⼈去傳播散佈這 些⾏銷的內容，並進而提升與客戶關係與滿意度的⾏銷策略？",
             "option": [
-                "（Ａ）搜尋引擎⾏銷（Search Engine Marketing",
-                " SEM）",
-                "（Ｂ）病毒式⾏銷（Viral Marketing",
-                " VM）"
+                "（Ａ）搜尋引擎⾏銷（Search Engine Marketing, SEM）",
+                "（Ｂ）病毒式⾏銷（Viral Marketing, VM）",
+                "（Ｃ）社會網路⾏銷（Social Network Marketing）",
+                "（Ｄ）遊戲置入性⾏銷（In-game Placement Marketing）"
             ],
             "answer": [
                 "3"
