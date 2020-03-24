@@ -835,8 +835,8 @@
             "option": [
                 "（Ａ）e-mail",
                 "（Ｂ）WWW（World Wide Web）",
-                "（Ｃ）電子佈告欄（Bulletin Board System",
-                " BBS）"
+                "（Ｃ）電子佈告欄（Bulletin Board System, BBS）",
+                "（Ｄ）商業自動化"
             ],
             "answer": [
                 "1",
@@ -1609,12 +1609,12 @@
         },
         {
             "no": "2-35.",
-            "question": "在電子商務，單⼀買⽅將需要的商品規格列於詢價單（request for quote",
+            "question": "在電子商務，單⼀買⽅將需要的商品規格列於詢價單（request for quote, RFQ）中，而賣⽅則對該商品進⾏競標，逐次降低商品的 投標價格，以最低價者得標。該種⽅式屬於下列何者電子商務經 營模式？",
             "option": [
-                " RFQ）中，而賣⽅則對該商品進⾏競標，逐次降低商品的 投標價格，以最低價者得標。該種⽅式屬於下列何者電子商務經 營模式？",
                 "（Ａ）逆向拍賣（reverse auction）",
                 "（Ｂ）自⾏定價（name-your-own-price）",
-                "（Ｃ）聯盟⾏銷（affiliate marketing）"
+                "（Ｃ）聯盟⾏銷（affiliate marketing）",
+                "（Ｄ）線上直銷（direct marketing）"
             ],
             "answer": [
                 "1"
@@ -3289,12 +3289,12 @@
         },
         {
             "no": "3-44.",
-            "question": "野中郁次郎（Nonaka",
+            "question": "野中郁次郎（Nonaka, 1994）提出的知識創造之  SECI  模式，其 中將外顯知識轉換成為內隱知識的過程，稱為下列何者？",
             "option": [
-                " 1994）提出的知識創造之 SECI 模式，其 中將外顯知識轉換成為內隱知識的過程，稱為下列何者？",
                 "（Ａ）內化（Internalization）",
                 "（Ｂ）社會化（Socialization）",
-                "（Ｃ）組合化（Combination）"
+                "（Ｃ）組合化（Combination）",
+                "（Ｄ）外化（Externalization）"
             ],
             "answer": [
                 "1"
@@ -3834,9 +3834,9 @@
             "question": "針對供應鏈中，由上中下游的各個成員同時協同合作參與規劃各 種設計、⾏銷、採購、預測等重要的決策，是指下列何者？",
             "option": [
                 "（Ａ）供應鏈管理系統（SCMS）",
-                "（Ｂ）快速反應（quick response",
-                " QR）",
-                "（Ｃ）供應商管理存貨（vendor managed inventory"
+                "（Ｂ）快速反應（quick response, QR）",
+                "（Ｃ）供應商管理存貨（vendor managed inventory, VMI）",
+                "（Ｄ）協同商務（collaborative commerce）"
             ],
             "answer": [
                 "4"
@@ -4007,10 +4007,10 @@
             "no": "3-97.",
             "question": "小明是個公車族，每天搭公車前都會使用手機的公車 APP，查看 公車何時到，請問這是屬於⾏動應用哪⼀種服務？",
             "option": [
-                "（Ａ）適地性服務（Location-Based Service",
-                " LBS）",
-                "（Ｂ）⾏動社群網路（Mobile Social Networking Service",
-                " MSNS）"
+                "（Ａ）適地性服務（Location-Based Service, LBS）",
+                "（Ｂ）⾏動社群網路（Mobile Social Networking Service, MSNS）",
+                "（Ｃ）⾏動搜尋（Mobile Search）",
+                "（Ｄ）⾏動商務（Mobile Commerce）"
             ],
             "answer": [
                 "3"
@@ -4048,10 +4048,10 @@
             "no": "3-100.",
             "question": "我們到某個地點或某家商店後，可以「打卡」通知臉書上的朋友，這種是屬於⾏動應用哪⼀種服務？",
             "option": [
-                "（Ａ）適地性服務（Location-Based Service",
-                " LBS）",
-                "（Ｂ）⾏動社群網路（Mobile Social Networking Service",
-                " MSNS）"
+                "（Ａ）適地性服務（Location-Based Service, LBS）",
+                "（Ｂ）⾏動社群網路（Mobile Social Networking Service, MSNS）",
+                "（Ｃ）⾏動搜尋（Mobile Search）",
+                "（Ｄ）⾏動商務（Mobile Commerce）"
             ],
             "answer": [
                 "1"
