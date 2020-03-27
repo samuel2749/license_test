@@ -5,14 +5,14 @@ export default {
 	extends: erp,
 	data () {
 		return {
-			title: 'EBC'
+			title: 'MKP'
 		}
 	},
 	mounted () {
 	},
 	methods: {
 		getJson () {
-			axio.get('/json/ebc.json').then(response => {
+			axio.get('/json/mkp.json').then(response => {
 				this.list = [...response.data[0]]
 			})
 		}

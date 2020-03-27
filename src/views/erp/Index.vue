@@ -1,11 +1,11 @@
 <template lang="pug">
-	.text-center(v-if="!erpData.length")
+	.text-center(v-if="!list.length")
 		button.btn.btn-primary(disabled)
 			span.spinner-border.spinner-border-sm(role="status" aria-hidden="true")
 			|Loading...
 	.pm.container-fluid(v-else)
 		template(v-if="type == 'step1'")
-			h1.text-center ERP
+			h1.text-center {{title}}
 			.row.h5 選擇題數：
 				button.btn.btn-sm.btn-success(@click="onAllTest") 全部
 			.form-row.form-inline.mb-2
@@ -35,7 +35,7 @@
 			button.btn.btn-lg.btn-block.btn-success.my-3(@click.prevent="onTest") {{startBtnValue}}
 		template(v-else-if="type == 'step2'")
 			.row
-				.h5 ERP：
+				.h5 {{title}}：
 					button.btn.btn-sm.btn-secondary.ml-2(@click="onBack") 返回
 			Practice(v-if="isTest" :questions="testQuestions" :callback="onBack" :total="total")
 			Reading(v-else :questions="testQuestions" :callback="onBack")
@@ -47,7 +47,8 @@ import Reading from '@/components/reading/Index.vue'
 export default {
 	data () {
 		return {
-			erpData: [],
+			title: 'ERP',
+			list: [],
 			testQuestions: [],
 			type: 'step1',
 			startNum: 1,
@@ -63,9 +64,7 @@ export default {
 		Reading
 	},
 	mounted () {
-		axio.get('/json/erp.json').then(response => {
-			this.erpData = [...response.data[0]]
-		})
+		this.getJson()
 	},
 	computed: {
 		isTest () {
@@ -76,25 +75,30 @@ export default {
 		}
 	},
 	methods: {
+		getJson () {
+			axio.get('/json/erp.json').then(response => {
+				this.list = [...response.data[0]]
+			})
+		},
 		onAllTest () {
 			this.startNum = 1
-			this.endNum = this.erpData.length
+			this.endNum = this.list.length
 		},
 		onTest () {
 			let qTotal = 0
-			let msg = `數字需介於1~${this.erpData.length}`
-			if (this.startNum < 1 || this.startNum > this.erpData.length) {
+			let msg = `數字需介於1~${this.list.length}`
+			if (this.startNum < 1 || this.startNum > this.list.length) {
 				window.alert(`開始${msg}}`)
 				return
 			}
-			if (this.endNum < 1 || this.endNum > this.erpData.length) {
+			if (this.endNum < 1 || this.endNum > this.list.length) {
 				window.alert(`結束${msg}}`)
 				return
 			}
 			this.testQuestions = []
 			for (let tempNum = this.startNum; tempNum <= this.endNum; tempNum++) {
 				qTotal += 1
-				this.testQuestions.push(this.erpData[tempNum - 1])
+				this.testQuestions.push(this.list[tempNum - 1])
 			}
 			if (this.countType === 'all') {
 				this.total = qTotal

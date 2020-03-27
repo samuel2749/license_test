@@ -6,7 +6,7 @@
 			.card-body
 				h5.card-title.text-primary.font-weight-bold {{item.question}}
 				.text-center(v-if="item.img")
-					img(:src="`images/ebc/${item.img}`" class="img-fluid")
+					img(:src="`./images/${item.img}`" class="img-fluid")
 				p.card-text(
 					v-for="(option, optionIndex) in item.option"
 					:key="`option-${optionIndex}`"

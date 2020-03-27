@@ -4,6 +4,7 @@ import Home from '@/views/Home.vue'
 import ERP from '@/views/erp/Index.vue'
 import PM from '@/views/pm/Index.vue'
 import EBC from '@/views/ebc/Index.vue'
+import MKP from '@/views/mkp/Index.vue'
 
 Vue.use(VueRouter)
 
@@ -27,6 +28,11 @@ const routes = [
 		path: '/pm',
 		name: 'pm',
 		component: PM
+	},
+	{
+		path: '/mkp',
+		name: 'mkp',
+		component: MKP
 	}
 ]
 

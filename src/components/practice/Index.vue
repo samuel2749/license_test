@@ -6,7 +6,7 @@
 		.row
 			.h3.text-primary {{nowQuestion.question}}
 		.text-center(v-if="nowQuestion.img")
-			img(:src="`images/ebc/${nowQuestion.img}`" class="img-fluid")
+			img(:src="`./images/${nowQuestion.img}`" class="img-fluid")
 		.row
 			.col-12.custom-control.h4(v-for="(item, index) in nowQuestion.option" :key="`option${index}`" :class="{'custom-radio': isRadio, 'custom-checkbox': !isRadio}")
 				input.custom-control-input(:type="isRadio? 'radio': 'checkbox'" :name="isRadio? 'radio': false" :id="`answer${index}`" :value="(index + 1).toString()" v-model="answers" :disabled="!isQuestion")
