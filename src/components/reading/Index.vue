@@ -2,18 +2,22 @@
 	.reading.container
 		.card.row.mb-3.border-primary(v-for="(item, index) in questions" :key="`q-${index}`")
 			.card-header
-				h3.font-weight-bold {{index + 1}}:
+				.row(:class="titleFontSize")
+					.font-weight-bold.col-6 {{index + 1}}:
+					.col-6.text-right
+						button.btn-secondary(@click="gotoTop") TOP
 			.card-body
-				h5.card-title.text-primary.font-weight-bold {{item.question}}
+				.card-title.text-primary.font-weight-bold(:class="titleFontSize") {{item.question}}
 				.text-center(v-if="item.img")
 					img(:src="`./images/${item.img}`" class="img-fluid")
 				p.card-text(
 					v-for="(option, optionIndex) in item.option"
 					:key="`option-${optionIndex}`"
-					:class="optionIndex|correct(item.answer)"
+					:class="getOtherClass(item.answer, optionIndex)"
 					) {{optionIndex+1}}：{{option}}
 </template>
 <script>
+import VueScrollTo from 'vue-scrollto'
 export default {
 	props: {
 		questions: {
@@ -44,16 +48,31 @@ export default {
 		}
 	},
 	mounted () {
-
 	},
 	filters: {
-		correct (val, arr) {
-			return arr.indexOf((val + 1) + '') > -1 ? 'bg-info text-white' : ''
-		}
 	},
 	computed: {
+		isMobile () {
+			return this.$store.state.isMobile
+		},
+		titleFontSize () {
+			return !this.isMobile ? 'h3' : 'h5'
+		}
 	},
 	methods: {
+		gotoTop () {
+			VueScrollTo.scrollTo('body', 500, { easing: 'linear' })
+		},
+		getOtherClass (arr, index) {
+			var classObj = {
+				h5: !this.isMobile
+			}
+			if (arr.indexOf((index + 1) + '') > -1) {
+				classObj['bg-info'] = true
+				classObj['text-white'] = true
+			}
+			return classObj
+		}
 	}
 }
 </script>

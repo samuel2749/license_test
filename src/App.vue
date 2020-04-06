@@ -13,9 +13,11 @@
         router-link.nav-link(to="./pm" :class="{active: $route.name === 'pm'}") 專案管理 考題
     router-view
     .row
-      .col-12.pt-5.pb-3.text-center Copyright 1.0.1 By Samuel 2019-12-1
+      .col-12.pt-5.pb-3.text-center Copyright 1.0.2 By Samuel 2020-4-6
 </template>
 <script>
+import { isMobile } from 'mobile-device-detect'
+
 export default {
 	data () {
 		return {
@@ -23,6 +25,7 @@ export default {
 		}
 	},
 	mounted () {
+		this.$store.dispatch('SetDevice', isMobile)
 	}
 }
 </script>

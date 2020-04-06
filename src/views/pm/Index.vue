@@ -29,7 +29,7 @@
 						input.custom-control-input(type="radio" id="radio-num" name="testTotal" value="limit" v-model="countType")
 						label.custom-control-label(for="radio-num") 題數
 					input.form-control.col-5(type="tel" v-model="qNum" :disabled="countType=='all'")
-			button.btn.btn-lg.btn-block.btn-success.my-3(@click.prevent="onTest") {{startBtnValue}}
+			button.btn.btn-lg.btn-success.my-3(:class="{'btn-block': isMobile}" @click.prevent="onTest") {{startBtnValue}}
 		template(v-else-if="type == 'step2'")
 			.row
 				.h5 專案管理：
@@ -64,6 +64,9 @@ export default {
 		})
 	},
 	computed: {
+		isMobile () {
+			return this.$store.state.isMobile
+		},
 		isTest () {
 			return this.modeType === 'test'
 		},
