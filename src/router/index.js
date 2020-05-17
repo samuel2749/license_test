@@ -5,6 +5,7 @@ import ERP from '@/views/erp/Index.vue'
 import PM from '@/views/pm/Index.vue'
 import EBC from '@/views/ebc/Index.vue'
 import MKP from '@/views/mkp/Index.vue'
+import Bulldozer from '@/views/bulldozer/Index.vue'
 
 Vue.use(VueRouter)
 
@@ -33,6 +34,11 @@ const routes = [
 		path: '/mkp',
 		name: 'mkp',
 		component: MKP
+	},
+	{
+		path: '/bulldozer',
+		name: 'bulldozer',
+		component: Bulldozer
 	}
 ]
 
