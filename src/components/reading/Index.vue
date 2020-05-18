@@ -14,7 +14,9 @@
 					v-for="(option, optionIndex) in item.option"
 					:key="`option-${optionIndex}`"
 					:class="getOtherClass(item.answer, optionIndex)"
-					) {{optionIndex+1}}：{{option}}
+					)
+						span {{optionIndex+1}}：
+						span(v-html="option")
 </template>
 <script>
 import VueScrollTo from 'vue-scrollto'

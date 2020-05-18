@@ -10,7 +10,8 @@
 		.row
 			.col-12.custom-control(v-for="(item, index) in nowQuestion.option" :key="`option${index}`" :class="optionClass")
 				input.custom-control-input(:type="isRadio? 'radio': 'checkbox'" :name="isRadio? 'radio': false" :id="`answer${index}`" :value="(index + 1).toString()" v-model="answers" :disabled="!isQuestion")
-				label.custom-control-label.p-1.custom-style-label(:for="`answer${index}`" :class="getOptionOtherClass(index + 1)") {{item}}
+				label.custom-control-label.p-1.custom-style-label(:for="`answer${index}`" :class="getOptionOtherClass(index + 1)")
+					span(v-html="item")
 				.clearfix
 		.row
 			button.btn.btn-lg.btn-success(:class="{'btn-block': isMobile}" @click.prevent="checkAnswer" v-if="isQuestion") 確認
@@ -32,11 +33,15 @@
 				.card.row.mb-3.border-primary(v-for="(item, index) in reviewQuestions" :key="`rewivew-q-${index}`")
 					.card-body
 						.card-title.text-primary.font-weight-bold(:class="titleFontSize") {{item.question}}
+						.text-center(v-if="item.img")
+							img(:src="`./images/${item.img}`" class="img-fluid")
 						p.card-text(
 							v-for="(option, optionIndex) in item.option"
 							:key="`option-${optionIndex}`"
 							:class="getOtherClass(optionIndex, item.answer, item.wrongAnswer)"
-							) {{optionIndex+1}}：{{option}}
+							)
+								span {{optionIndex+1}}：
+								span(v-html="option")
 				.text-right
 					button.btn-secondary(@click="gotoTop") TOP
 </template>
