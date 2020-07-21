@@ -44,10 +44,11 @@
 import axio from 'axios'
 import Practice from '@/components/practice/Index.vue'
 import Reading from '@/components/reading/Index.vue'
+import TestList from '@/constants/list.js'
 export default {
 	data () {
 		return {
-			title: 'ERP',
+			title: '',
 			list: [],
 			testQuestions: [],
 			type: 'step1',
@@ -63,8 +64,15 @@ export default {
 		Practice,
 		Reading
 	},
+	watch: {
+		$route: {
+			immediate: true,
+			handler (newValue, oldValue) {
+				this.checkTestType()
+			}
+		}
+	},
 	mounted () {
-		this.getJson()
 	},
 	computed: {
 		isMobile () {
@@ -78,9 +86,20 @@ export default {
 		}
 	},
 	methods: {
-		getJson () {
-			axio.get('/json/erp.json').then(response => {
+		checkTestType () {
+			let obj = TestList[this.$route.params.type]
+			if (!obj) {
+				window.alert('目前沒有該測驗資料，請重新選取！')
+				this.$router.push('/')
+				return
+			}
+			this.title = obj.title
+			this.getJson(obj.jsonPath)
+		},
+		getJson (path) {
+			axio.get(`/json/${path}`).then(response => {
 				this.list = [...response.data[0]]
+				this.onBack()
 			})
 		},
 		onAllTest () {
